@@ -68,10 +68,12 @@ namespace Bulletin
 
 	public class Student : Person
 	{
-		private List<Evaluation> Cours = new List<Evaluation>();
+		public List<Evaluation> Cours = new List<Evaluation>();
+		public int matricule;
 
-		public Student(string firstname, string lastname) : base(firstname, lastname)
+		public Student(string firstname, string lastname, int mat) : base(firstname, lastname)
 		{
+			this.matricule = mat;
 		}
 
 		public void Add(Evaluation eval)

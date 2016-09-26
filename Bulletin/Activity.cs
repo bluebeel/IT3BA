@@ -1,4 +1,6 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace Bulletin
 {
 	public class Activity
@@ -52,6 +54,7 @@ namespace Bulletin
 			}
 		}
 
+		[JsonProperty("professeur")]
 		public Teacher Teacher
 		{
 			get

@@ -13,9 +13,9 @@ namespace Bulletin
 			Teacher combefis = new Teacher("Sebastien", "Combéfis", 2500);
 			Console.WriteLine(lurkin.DisplayName());
 			Console.WriteLine(combefis.DisplayName());
-			Student saikou = new Student("Saïkou", "BARRY");
-			Student guy = new Student("Guy", "Momo");
-			Student ubert = new Student("Ubert", "Mugamo");
+			Student saikou = new Student("Saïkou", "BARRY", 14055);
+			Student guy = new Student("Guy", "Momo", 14220);
+			Student ubert = new Student("Ubert", "Mugamo", 15030);
 			Activity pi = new Activity(6, "Projet Info", "2", lurkin);
 			Activity poo = new Activity(6, "Prog. Orienté Objet", "3", combefis);
 
@@ -34,44 +34,16 @@ namespace Bulletin
 			/*
 
 			saikou.Bulletin(@"/Users/saikouah/Documents/Info-3BA/Cours/Bulletin/test2.txt");
+			 */
 
-			string a = @"/Users/saikouah/Documents/Info-3BA/Cours/Bulletin/test.csv";
 
-			var reader = new StreamReader(File.OpenRead(a));
-			List<string> listA = new List<string>();
-			List<string> listB = new List<string>();
-			while (!reader.EndOfStream)
-			{
-				var line = reader.ReadLine();
-				var values = line.Split(',');
+			string json = @"{'Activity':[{'ects':6,'name':'poo','code':'2030','professeur': {'firstname': 'Quentin', 'lastname': 'Lurkin', 'salary': 2000}}, {'ects':6,'name':'pi','code':'2130','professeur': {'firstname': 'Sebastien', 'lastname': 'Combefis', 'salary': 2000}}],'Student':[{'firstname':'Saikou','lastname':'Barry','notes':[{'activity':'pi','note':18},{'activity':'poo','note':18}]}]}";
 
-				listA.Add(values[0]);
-				listB.Add(values[1]);
-			}
-			Console.WriteLine("Column 1:");
-			foreach (var element in listA)
-				Console.WriteLine(element);
+			Parser m = JsonConvert.DeserializeObject<Parser>(json);
 
-			// print column2
-			Console.WriteLine("Column 2:");
-			foreach (var element in listB)
-				Console.WriteLine(element);
-
-			*/
-
-			/*string json = @"{
-			  'Name': 'Bad Boys',
-			  'ReleaseDate': '1995-4-7T00:00:00',
-			  'Genres': [
-			    'Action',
-			    'Comedy'
-			  ]
-			}";
-
-			object m = JsonConvert.DeserializeObject(json);
-
-			Console.WriteLine(m);
-			*/
+			Console.WriteLine(m.Student[0].Firstname);
+			Console.WriteLine(m.Activity[0].Teacher.Firstname);
+			Console.WriteLine(m.Activity[1].Teacher.Firstname);
 		}
 	}
 }
