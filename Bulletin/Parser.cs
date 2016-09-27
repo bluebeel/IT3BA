@@ -10,7 +10,7 @@ namespace Bulletin
 		public List<Teacher> Teacher { get; set; }
 		public List<Activity> Activity { get; set; }
 		public List<Student> Student { get; set; }
-		public List<Evaluation> Evaluation { get; set; }
+		public List<Bulletin> Evaluation { get; set; }
 	}
 
 	public class EvaluationConverter : JsonConverter

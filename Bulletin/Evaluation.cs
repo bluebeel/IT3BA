@@ -111,4 +111,57 @@ namespace Bulletin
 		}
 	}
 
+	public class Bulletin
+	{
+		public string type;
+		public string code;
+		public string eleve;
+		public string note;
+
+		public string Code
+		{
+			get
+			{
+				return this.code;
+			}
+			set
+			{
+				this.code = value;
+			}
+		}
+		public string Type
+		{
+			get
+			{
+				return this.type;
+			}
+			set
+			{
+				this.type = value;
+			}
+		}
+		public string Eleve
+		{
+			get
+			{
+				return this.eleve;
+			}
+			set
+			{
+				this.eleve = value;
+			}
+		}
+		public string Note
+		{
+			get
+			{
+				return this.note;
+			}
+			set
+			{
+				this.note = value;
+			}
+		}
+	}
+
 }

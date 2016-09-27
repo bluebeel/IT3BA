@@ -9,13 +9,13 @@ namespace Bulletin
 	{
 		public static void Main(string[] args)
 		{
-			Teacher lurkin = new Teacher("Quentin", "Lurkin", 2000);
-			Teacher combefis = new Teacher("Sebastien", "Combéfis", 2500);
+			Teacher lurkin = new Teacher("Quentin", "Lurkin", "LUR", 2000);
+			Teacher combefis = new Teacher("Sebastien", "Combéfis", "CBF", 2500);
 			Console.WriteLine(lurkin.DisplayName());
 			Console.WriteLine(combefis.DisplayName());
-			Student saikou = new Student("Saïkou", "BARRY", 14055);
-			Student guy = new Student("Guy", "Momo", 14220);
-			Student ubert = new Student("Ubert", "Mugamo", 15030);
+			Student saikou = new Student("Saïkou", "BARRY", "14055");
+			Student guy = new Student("Guy", "Momo", "14220");
+			Student ubert = new Student("Ubert", "Mugamo", "15030");
 			Activity pi = new Activity(6, "Projet Info", "2", lurkin);
 			Activity poo = new Activity(6, "Prog. Orienté Objet", "3", combefis);
 
@@ -40,20 +40,25 @@ namespace Bulletin
 
 			JsonConverter[] converters = { new EvaluationConverter() };
 			JsonSerializerSettings settings = new  JsonSerializerSettings() {Converters = converters};
-			string json = @"{'Activity':[{'ects':6,'name':'poo','code':'2030','professeur':{'firstname':'Quentin','lastname':'Lurkin','salary':2000}},{'ects':6,'name':'pi','code':'2130','professeur':{'firstname':'Sebastien','lastname':'Combefis','salary':2000}}],'Student':[{'firstname':'Saikou','lastname':'Barry','grade':[{'activity':{'ects':6,'name':'poo','code':'2030','professeur':{'firstname':'Quentin','lastname':'Lurkin','salary':2000}},'note':18},{'activity':{'ects':6,'name':'poo','code':'2030','professeur':{'firstname':'Quentin','lastname':'Lurkin','salary':2000}},'note':18}],'appreciation':[{'activity':{'ects':6,'name':'poo','code':'2030','professeur':{'firstname':'Quentin','lastname':'Lurkin','salary':2000}},'appreciation':'B'},{'activity':{'ects':6,'name':'poo','code':'2030','professeur':{'firstname':'Quentin','lastname':'Lurkin','salary':2000}},'appreciation':'TB'}]}]}";
-			Parser m = JsonConvert.DeserializeObject<Parser>(json, settings);
+			//string json = @"{'Activity':[{'ects':6,'name':'poo','code':'2030','professeur': 'LUR'},{'ects':6,'name':'pi','code':'2130','professeur': 'CBF'}],'Student':[{'firstname':'Saikou','lastname':'Barry'}]}";
+			//Parser m = JsonConvert.DeserializeObject<Parser>(json, settings);
 
-			Console.WriteLine(m.Evaluation.Count);
-			/*foreach (Student eleve in m.Student)
+			string json = "{ 'Activity':[{'ects':6,'name':'poo','code':'2030','professeur':'LUR'},{'ects':6,'name':'pi','code':'2130','professeur':'CBF'}],'Teacher':[{'firstname':'Quentin','lastname':'Lurkin','matricule':'LUR','salary':2000},{'firstname':'Sebastien','lastname':'Combéfis','matricule':'CBF','salary':2130}],'Student':[{'firstname':'Saikou','lastname':'Barry','matricule':'14055'},{'firstname':'Guy','lastname':'Momo','matricule':'14155'}],'Bulletin':[{'type':'grade','code':'2030','eleve':'14055','note':'18'},{'type':'appreciation','code':'2130','eleve':'14055','note':'N'},{'type':'grade','code':'2130','eleve':'14155','note':'15'},{'type':'appreciation','code':'2030','eleve':'14155','note':'TB'}]}";
+			Parser m = JsonConvert.DeserializeObject<Parser>(json);
+			foreach (Student eleve in m.Student)
 			{
 				Console.WriteLine(eleve.Firstname + " " + eleve.Lastname);
-				Console.WriteLine(eleve.Cours.Count);
 			}
 			foreach (Activity activity in m.Activity)
 			{
 				Console.WriteLine(activity.ECTS + "-" + activity.Name + "-" + activity.Code);
-				Console.WriteLine("Mat. : " + activity.matricule);
-			}*/
+				Console.WriteLine("Mat. : " + activity.Professeur);
+			}
+			foreach (Teacher teacher in m.Teacher)
+			{
+				Console.WriteLine(teacher.Firstname + "-" + teacher.Lastname + "-" + teacher.matricule);
+				Console.WriteLine("Salary : " + teacher.Salary);
+			}
 		}
 	}
 }

@@ -51,10 +51,12 @@ namespace Bulletin
 	public class Teacher : Person
 	{
 		private int salary;
+		public string matricule;
 
-		public Teacher(string firstname, string lastname, int salaire) : base(firstname, lastname)
+		public Teacher(string firstname, string lastname, string mat, int salaire) : base(firstname, lastname)
 		{
 			this.salary = salaire;
+			this.matricule = mat;
 		}
 
 		public int Salary
@@ -70,9 +72,9 @@ namespace Bulletin
 	{
 		public List<Evaluation> Cours = new List<Evaluation>();
 
-		public int matricule;
+		public string matricule;
 
-		public Student(string firstname, string lastname, int mat) : base(firstname, lastname)
+		public Student(string firstname, string lastname, string mat) : base(firstname, lastname)
 		{
 			this.matricule = mat;
 		}

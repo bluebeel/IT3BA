@@ -9,7 +9,7 @@ namespace Bulletin
 		public string name;
 		public string code;
 		public Teacher teacher;
-		public string matricule;
+		public string professeur;
 
 		public Activity(int ects, string name, string code, Teacher prof)
 		{
@@ -55,15 +55,15 @@ namespace Bulletin
 			}
 		}
 
-		public string Matricule
+		public string Professeur
 		{
 			get
 			{
-				return this.matricule;
+				return this.professeur;
 			}
 			set
 			{
-				this.matricule = value;
+				this.professeur = value;
 			}
 		}
 
