@@ -9,6 +9,7 @@ namespace Bulletin
 		public string name;
 		public string code;
 		public Teacher teacher;
+		public string matricule;
 
 		public Activity(int ects, string name, string code, Teacher prof)
 		{
@@ -54,7 +55,18 @@ namespace Bulletin
 			}
 		}
 
-		[JsonProperty("professeur")]
+		public string Matricule
+		{
+			get
+			{
+				return this.matricule;
+			}
+			set
+			{
+				this.matricule = value;
+			}
+		}
+
 		public Teacher Teacher
 		{
 			get

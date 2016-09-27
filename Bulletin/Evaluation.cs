@@ -81,4 +81,34 @@ namespace Bulletin
 			}
 		}
 	}
+
+	public class Note
+	{
+		public string code;
+		public int score;
+
+		public string Code
+		{
+			get
+			{
+				return this.code;
+			}
+			set 
+			{
+				this.code = value;
+			}
+		}
+		public int Score
+		{
+			get
+			{
+				return this.score;
+			}
+			set
+			{
+				this.score = value;
+			}
+		}
+	}
+
 }

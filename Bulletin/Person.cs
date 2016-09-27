@@ -61,7 +61,7 @@ namespace Bulletin
 		{
 			get
 			{
-				return salary;
+				return this.salary;
 			}
 		}
 	}
@@ -69,6 +69,7 @@ namespace Bulletin
 	public class Student : Person
 	{
 		public List<Evaluation> Cours = new List<Evaluation>();
+
 		public int matricule;
 
 		public Student(string firstname, string lastname, int mat) : base(firstname, lastname)
