@@ -1,0 +1,68 @@
+"{
+   'Activity':[
+      {
+         'ects':6,
+         'name':'poo',
+         'code':'2030',
+         'professeur':'LUR'
+      },
+      {
+         'ects':6,
+         'name':'pi',
+         'code':'2130',
+         'professeur':'CBF'
+      }
+   ],
+   'Teacher':[
+      {
+         'firstname': 'Quentin',
+         'lastname': 'Lurkin',
+         'professeur':'LUR',
+         'salary': 2000
+      },
+      {
+         'firstname': 'Sebastien',
+         'lastname': 'Combéfis',
+         'professeur':'CBF',
+         'salary': 2130
+      }
+   ],
+   'Student':[
+      {
+         'firstname':'Saikou',
+         'lastname':'Barry',
+         'matricule': '14055'
+      },
+      {
+         'firstname':'Guy',
+         'lastname':'Momo',
+         'matricule': '14155'
+      }
+   ],
+   'Bulletin':[
+      {
+         'type': 'grade',
+         'code': '2030',
+         'eleve':'14055',
+         'note': '18'
+      },
+      {
+         'type': 'appreciation',
+         'code': '2130',
+         'eleve':'14055',
+         'note': 'N'
+      },
+      {
+         'type': 'grade',
+         'code': '2130',
+         'eleve':'14155',
+         'note': '15'
+      },
+      {
+         'type': 'appreciation',
+         'code': '2030',
+         'eleve':'14155',
+         'note': 'TB'
+      }
+   ]
+}"

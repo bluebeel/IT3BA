@@ -94,13 +94,20 @@ namespace Bulletin
 			}
 			return cote / this.Cours.Count;
 		}
-
+		/*
 		public void Bulletin(string path)
 		{
 			StreamWriter file = new StreamWriter(path, true);
 			file.WriteLine("----- Bulletin -----");
 			file.WriteLine(string.Format("Nom : {0}\nPrenom : {1}", this.Firstname, this.Lastname));
 			file.Close();
+		}
+		*/
+		public void Bulletin()
+		{
+			
+			Console.WriteLine("----- Bulletin -----");
+			Console.WriteLine(string.Format("Nom : {0}\nPrenom : {1}", this.Firstname, this.Lastname));
 		}
 	}
 }
