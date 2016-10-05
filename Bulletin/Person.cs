@@ -107,7 +107,20 @@ namespace Bulletin
 		{
 			
 			Console.WriteLine("----- Bulletin -----");
-			Console.WriteLine(string.Format("Nom : {0}\nPrenom : {1}", this.Firstname, this.Lastname));
+			Console.WriteLine(string.Format("Nom : {0}\n" +
+			                                "Prenom : {1}\n" +
+			                                "Mat : {2}\n"
+			                                , this.Firstname, this.Lastname, this.matricule));
+			foreach (Evaluation eval in this.Cours)
+			{
+				Console.WriteLine(string.Format("Nom du cours : {0}\n" +
+				                                "ECTS : {1}\n" +
+				                                "Nom du professeur : {2}\n" +
+												"Note : {3}\n"
+				                                , eval.activity.Name, eval.activity.ECTS, eval.activity.Teacher.matricule, eval.Note()));
+			}
+
+			Console.WriteLine(string.Format("Moyenne générale : {0} / 20\n", Average()));
 		}
 	}
 }

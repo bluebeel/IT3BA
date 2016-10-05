@@ -3,7 +3,7 @@ namespace Bulletin
 {
 	public abstract class Evaluation
 	{
-		protected Activity activity;
+		public Activity activity;
 
 		protected Evaluation() { }
 
