@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compte_rebours", "Compte_re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulletin", "Bulletin\Bulletin.csproj", "{1826FA65-1C9B-46F2-A812-6D3FC88F044F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Introspection", "Introspection\Introspection.csproj", "{FC0C907E-4067-44C2-8F19-6037C31DDD85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflexion", "Reflexion\Reflexion.csproj", "{139EDF59-5803-4B2B-A35D-FE9F8674B27E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -37,5 +41,13 @@ Global
 		{1826FA65-1C9B-46F2-A812-6D3FC88F044F}.Debug|x86.Build.0 = Debug|x86
 		{1826FA65-1C9B-46F2-A812-6D3FC88F044F}.Release|x86.ActiveCfg = Release|x86
 		{1826FA65-1C9B-46F2-A812-6D3FC88F044F}.Release|x86.Build.0 = Release|x86
+		{FC0C907E-4067-44C2-8F19-6037C31DDD85}.Debug|x86.ActiveCfg = Debug|x86
+		{FC0C907E-4067-44C2-8F19-6037C31DDD85}.Debug|x86.Build.0 = Debug|x86
+		{FC0C907E-4067-44C2-8F19-6037C31DDD85}.Release|x86.ActiveCfg = Release|x86
+		{FC0C907E-4067-44C2-8F19-6037C31DDD85}.Release|x86.Build.0 = Release|x86
+		{139EDF59-5803-4B2B-A35D-FE9F8674B27E}.Debug|x86.ActiveCfg = Debug|x86
+		{139EDF59-5803-4B2B-A35D-FE9F8674B27E}.Debug|x86.Build.0 = Debug|x86
+		{139EDF59-5803-4B2B-A35D-FE9F8674B27E}.Release|x86.ActiveCfg = Release|x86
+		{139EDF59-5803-4B2B-A35D-FE9F8674B27E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal

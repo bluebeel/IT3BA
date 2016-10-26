@@ -6,17 +6,18 @@ namespace Bulletin
 	public class Activity
 	{
 		private int ects;
-		public string name;
-		public string code;
-		public Teacher teacher;
-		public string professeur;
+		private string name;
+		private string code;
+		private string professeur;
 
-		public Activity(int ects, string name, string code, Teacher prof)
+		[JsonIgnore]
+		private Teacher teacher;
+
+		public Activity(int ects, string name, string code)
 		{
 			this.ects = ects;
 			this.name = name;
 			this.code = code;
-			this.teacher = prof;
 		}
 
 		public int ECTS
@@ -67,6 +68,7 @@ namespace Bulletin
 			}
 		}
 
+		[JsonIgnore]
 		public Teacher Teacher
 		{
 			get

@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Bulletin
 {
 	public abstract class Evaluation
@@ -83,10 +84,19 @@ namespace Bulletin
 	}
 	public class Bulletin
 	{
-		public string type;
-		public string code;
-		public string eleve;
-		public string note;
+		
+		private string type;
+		private string code;
+		private string eleve;
+		private string note;
+
+		public Bulletin(string type, string code, string eleve, string note)
+		{
+			this.type = type;
+			this.code = code;
+			this.eleve = eleve;
+			this.note = note;
+		}
 
 		public string Code
 		{

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.IO;
+using Newtonsoft.Json;
 
 namespace Bulletin
 {
@@ -70,6 +68,7 @@ namespace Bulletin
 
 	public class Student : Person
 	{
+		[JsonIgnore]
 		public List<Evaluation> Cours = new List<Evaluation>();
 
 		public string matricule;
@@ -94,33 +93,27 @@ namespace Bulletin
 			}
 			return cote / this.Cours.Count;
 		}
-		/*
-		public void Bulletin(string path)
-		{
-			StreamWriter file = new StreamWriter(path, true);
-			file.WriteLine("----- Bulletin -----");
-			file.WriteLine(string.Format("Nom : {0}\nPrenom : {1}", this.Firstname, this.Lastname));
-			file.Close();
-		}
-		*/
+
 		public void Bulletin()
 		{
 			
-			Console.WriteLine("----- Bulletin -----");
+			Console.WriteLine("Bulletin :");
+			/*
 			Console.WriteLine(string.Format("Nom : {0}\n" +
 			                                "Prenom : {1}\n" +
 			                                "Mat : {2}\n"
 			                                , this.Firstname, this.Lastname, this.matricule));
+			                                */
 			foreach (Evaluation eval in this.Cours)
 			{
-				Console.WriteLine(string.Format("Nom du cours : {0}\n" +
-				                                "ECTS : {1}\n" +
-				                                "Nom du professeur : {2}\n" +
-												"Note : {3}\n"
+				Console.WriteLine(string.Format("\tNom du cours : {0}\n" +
+				                                "\tECTS : {1}\n" +
+				                                "\tNom du professeur : {2}\n" +
+												"\tNote : {3}\n"
 				                                , eval.activity.Name, eval.activity.ECTS, eval.activity.Teacher.matricule, eval.Note()));
 			}
 
-			Console.WriteLine(string.Format("Moyenne générale : {0} / 20\n", Average()));
+			Console.WriteLine(string.Format("\tMoyenne générale : {0} / 20\n", Average()));
 		}
 	}
 }
