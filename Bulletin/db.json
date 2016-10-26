@@ -31,38 +31,39 @@
       {
          "firstname":"Saikou",
          "lastname":"Barry",
-         "matricule":"14055"
+         "matricule":14055
       },
       {
          "firstname":"Guy",
          "lastname":"Momo",
-         "matricule":"14155"
+         "matricule":14155
       }
    ],
    "Bulletin":[
       {
          "type":"grade",
          "code":"2030",
-         "eleve":"14055",
+         "eleve":14055,
          "note":"18"
       },
       {
          "type":"appreciation",
          "code":"2130",
-         "eleve":"14055",
+         "eleve":14055,
          "note":"N"
       },
       {
          "type":"grade",
          "code":"2130",
-         "eleve":"14155",
+         "eleve":14155,
          "note":"15"
       },
       {
          "type":"appreciation",
          "code":"2030",
-         "eleve":"14155",
+         "eleve":14155,
          "note":"TB"
       }
-   ]
+   ],
+   "Compteur": 16000
 }

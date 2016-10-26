@@ -71,9 +71,9 @@ namespace Bulletin
 		[JsonIgnore]
 		public List<Evaluation> Cours = new List<Evaluation>();
 
-		public string matricule;
+		public int matricule;
 
-		public Student(string firstname, string lastname, string mat) : base(firstname, lastname)
+		public Student(string firstname, string lastname, int mat) : base(firstname, lastname)
 		{
 			this.matricule = mat;
 		}
@@ -98,12 +98,6 @@ namespace Bulletin
 		{
 			
 			Console.WriteLine("Bulletin :");
-			/*
-			Console.WriteLine(string.Format("Nom : {0}\n" +
-			                                "Prenom : {1}\n" +
-			                                "Mat : {2}\n"
-			                                , this.Firstname, this.Lastname, this.matricule));
-			                                */
 			foreach (Evaluation eval in this.Cours)
 			{
 				Console.WriteLine(string.Format("\tNom du cours : {0}\n" +

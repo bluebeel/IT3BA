@@ -64,7 +64,7 @@ namespace Bulletin
 
 			//once we have the users selection make sure its an integer and in range of our menu options
 			//if not then show an error message and re-display the menu
-			if (!int.TryParse(choice, out choiceIndex) || currentMenu.MenuItems.Count < choiceIndex || choiceIndex < 0)
+			if (!int.TryParse(choice, out choiceIndex) || currentMenu.MenuItems.Count < choiceIndex +1 || choiceIndex < 0)
 			{
 				Console.Clear();
 				Console.WriteLine("Invalid selection - try again");

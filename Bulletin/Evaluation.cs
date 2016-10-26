@@ -87,10 +87,10 @@ namespace Bulletin
 		
 		private string type;
 		private string code;
-		private string eleve;
+		private int eleve;
 		private string note;
 
-		public Bulletin(string type, string code, string eleve, string note)
+		public Bulletin(string type, string code, int eleve, string note)
 		{
 			this.type = type;
 			this.code = code;
@@ -124,11 +124,11 @@ namespace Bulletin
 		{
 			get
 			{
-				return this.eleve;
+				return this.eleve.ToString();
 			}
 			set
 			{
-				this.eleve = value;
+				this.eleve = Int32.Parse(value);
 			}
 		}
 		public string Note
