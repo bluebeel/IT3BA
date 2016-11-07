@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Bulletin
@@ -10,6 +9,7 @@ namespace Bulletin
 	{
 		public class Globals
 		{
+			// Global variables
 			private static Parser m;
 			private static int compteur;
 			private static MenuCollection collection;
@@ -51,15 +51,19 @@ namespace Bulletin
 
 		static void Main(string[] args)
 		{
-			// build a collection of menus
-			// can have as deep a structure as you like
-			// give each menu a unique integer MenuId
-			// link to other menus by setting HasSubMenu to true, and the SubMenuId to the MenuId of the menu you wish to link to
-			// or, set HasSubMenu to false, and have an Action performed when the menuitem is selected
-
-			StreamReader r = new StreamReader("../../db.json");
-			string content = r.ReadToEnd();
-			Globals.M = JsonConvert.DeserializeObject<Parser>(content);
+			/* The quickest method of converting between JSON text and a .NET object is using the JsonSerializer. 
+			 * The JsonSerializer converts .NET objects into their JSON equivalent 
+			 * and back again by mapping the .NET object property names to the JSON property names 
+			 * and copies the values for you.
+			 * After the deserializing, creation of the Evaluation for each student thanks to the Bulletin Class.
+			 */
+			using (StreamReader sr = new StreamReader("../../db.json"))
+			{
+				Globals.M = JsonConvert.DeserializeObject<Parser>(sr.ReadToEnd());
+			}
+			//StreamReader r = new StreamReader("../../db.json");
+			//string content = r.ReadToEnd();
+			//Globals.M = JsonConvert.DeserializeObject<Parser>(content);
 			Globals.Compteur = Globals.M.Compteur;
 			foreach (Activity activity in Globals.M.Activity)
 			{
@@ -79,9 +83,11 @@ namespace Bulletin
 					}
 				}
 			}
-			//string json = JsonConvert.SerializeObject(Globals.M);
-			//Console.WriteLine(json);
 
+			// build a collection of menus
+			// give each menu a unique integer MenuId
+			// link to other menus by setting HasSubMenu to true, and the SubMenuId to the MenuId of the menu you wish to link to
+			// or, set HasSubMenu to false, and have an Action performed when the menuitem is selected
 			Globals.Collection = new MenuCollection()
 			{
 				Menus =
@@ -258,7 +264,6 @@ namespace Bulletin
 			};
 
 			Globals.Collection.ShowMenu(1);
-			Console.ReadLine();
 		}
 
 		static void ShowAllActivities()
@@ -266,7 +271,7 @@ namespace Bulletin
 			Console.Clear();
 			foreach (Activity activity in Globals.M.Activity)
 			{
-				Console.WriteLine("{0} - {1} - {2}", activity.Code, activity.Name, activity.ECTS);
+				Console.WriteLine("[{0}] {1}", activity.Code, activity.Name);
 			}
 			Console.WriteLine("--------------------\n");
 			Key(11);
@@ -274,10 +279,11 @@ namespace Bulletin
 
 		static void FindActivityByCode()
 		{
+			Console.Write("Code : ");
 			string code = Console.ReadLine();
 			Activity course = Globals.M.Activity.Find(c => c.Code == code);
 			Console.Clear();
-			Console.WriteLine(string.Format("Nom : {0}\n" +
+			Console.WriteLine(string.Format("Name : {0}\n" +
 											"ECTS : {1}\n" +
 											"Code : {2}\n" +
 											"Teacher : {3} {4}\n"
@@ -291,7 +297,7 @@ namespace Bulletin
 			Console.Clear();
 			foreach (Teacher teacher in Globals.M.Teacher)
 			{
-				Console.WriteLine("{0} - {1} {2}", teacher.matricule, teacher.Firstname, teacher.Lastname);
+				Console.WriteLine("[{0}] - {1} {2}", teacher.matricule, teacher.Firstname, teacher.Lastname);
 			}
 			Console.WriteLine("--------------------\n");
 			Key(12);
@@ -299,10 +305,11 @@ namespace Bulletin
 
 		static void FindTeacherByMatricule()
 		{
+			Console.Write("Matricule : ");
 			string code = Console.ReadLine();
 			Teacher prof = Globals.M.Teacher.Find(c => c.matricule == code);
 			Console.Clear();
-			Console.WriteLine(string.Format("Nom : {0} {1}\n" +
+			Console.WriteLine(string.Format("Name : {0} {1}\n" +
 											"Matricule : {2}\n" +
 											"Salary : {3} €\n"
 											, prof.Lastname, prof.Firstname, prof.matricule, prof.Salary));
@@ -315,7 +322,7 @@ namespace Bulletin
 			Console.Clear();
 			foreach (Student eleve in Globals.M.Student)
 			{
-				Console.WriteLine("{0} - {1} {2}", eleve.matricule, eleve.Firstname, eleve.Lastname);
+				Console.WriteLine("[{0}] - {1} {2}", eleve.matricule, eleve.Lastname, eleve.Firstname);
 			}
 			Console.WriteLine("--------------------\n");
 			Key(13);
@@ -323,7 +330,7 @@ namespace Bulletin
 
 		static void FindStudentByMatricule()
 		{
-			
+			Console.Write("Code : ");
 			string code = Console.ReadLine();
 			Student std = Globals.M.Student.Find(c => c.matricule == Int32.Parse(code));
 			Console.Clear();
@@ -337,7 +344,7 @@ namespace Bulletin
 
 		static void Add(string context)
 		{
-			
+
 			switch (context)
 			{
 				case "student":
@@ -351,9 +358,10 @@ namespace Bulletin
 					Globals.M.Student.Add(new Student(fStdName, lStdName, Globals.Compteur));
 					Globals.Compteur += 1;
 					Console.WriteLine("\nStudent created\n");
+					Save();
 					Key(13);
 					break;
-					
+
 				case "teacher":
 					Console.Clear();
 					Console.WriteLine("Add teacher");
@@ -403,9 +411,10 @@ namespace Bulletin
 					}
 					Globals.M.Teacher.Add(new Teacher(fTchName, lTchName, matTch, TchSalary));
 					Console.WriteLine("\nTeacher created\n");
+					Save();
 					Key(12);
 					break;
-					
+
 				case "activity":
 					Console.Clear();
 					Console.WriteLine("Add activity");
@@ -459,26 +468,30 @@ namespace Bulletin
 						activity.Teacher = Globals.M.Teacher.Find(t => t.matricule == activity.Professeur);
 						Globals.M.Activity.Add(activity);
 						Console.WriteLine("\nActivity created\n");
+						Save();
 						Key(11);
 					}
-					else 
-					{ 
+					else
+					{
 						Console.WriteLine("The name you gave does not exist. Would you like to create a new teacher ? (y/n) ");
-						string answer = Console.ReadLine();
-
-						if (answer == "y")
+						string answer = "s";
+						while (answer != "y" || answer != "n")
 						{
-							Add("teacher");
+							answer = Console.ReadLine();
+							if (answer == "y")
+							{
+								Add("teacher");
+							}
+							else if (answer == "n")
+							{
+								Console.Clear();
+								Globals.Collection.ShowMenu(11);
+							}
+							else {
+								Console.WriteLine("Please choose between y or n ");
+								Console.WriteLine("The name you gave does not exist. Would you like to create a new teacher ? (y/n) ");
+							}
 						}
-						else if (answer == "n")
-						{
-							Environment.Exit(0);
-						}
-						else {
-							Console.WriteLine("Please choose between y or n ");
-							Console.WriteLine("The name you gave does not exist. Would you like to create a new teacher ? (y/n) ");
-							// rajouter une boucle sinon crash
-						} 
 					}
 
 					break;
@@ -503,6 +516,15 @@ namespace Bulletin
 						Environment.Exit(0);
 						break;
 				}
+			}
+		}
+
+		static void Save()
+		{
+			using (StreamWriter file =
+			new StreamWriter("../../db.json"))
+			{
+				file.WriteLine(JsonConvert.SerializeObject(Globals.M));
 			}
 		}
 	}

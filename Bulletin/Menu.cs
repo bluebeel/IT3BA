@@ -67,7 +67,7 @@ namespace Bulletin
 			if (!int.TryParse(choice, out choiceIndex) || currentMenu.MenuItems.Count < choiceIndex +1 || choiceIndex < 0)
 			{
 				Console.Clear();
-				Console.WriteLine("Invalid selection - try again");
+				Console.WriteLine("Invalid selection - try again\n");
 				ShowMenu(id);
 			}
 			else

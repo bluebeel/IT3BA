@@ -68,6 +68,9 @@ namespace Bulletin
 
 	public class Student : Person
 	{
+		/* the Cours attribute is ignored during the serializing
+		 * because JsonSerializer can serialize a abstract class.
+		*/
 		[JsonIgnore]
 		public List<Evaluation> Cours = new List<Evaluation>();
 

@@ -10,6 +10,9 @@ namespace Bulletin
 		private string code;
 		private string professeur;
 
+		/* the Teacher attribute and property is ignored during the serializing
+		 * to avoid a nested representation of the teacher object in Activity
+		*/
 		[JsonIgnore]
 		private Teacher teacher;
 

@@ -84,7 +84,10 @@ namespace Bulletin
 	}
 	public class Bulletin
 	{
-		
+		/* It's not possible to serialize an abstract class. 
+		 * This class stores information necessary for the creation of Evalutions
+		 * of students for the course concerned. 
+		 */ 
 		private string type;
 		private string code;
 		private int eleve;
