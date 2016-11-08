@@ -39,6 +39,9 @@
     <Compile Include="IReciever.cs" />
     <Compile Include="Commands\Multiply.cs" />
     <Compile Include="Calculator.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="Commands\Substraction.cs" />
+    <Compile Include="Commands\Division.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />

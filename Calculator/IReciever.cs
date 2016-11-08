@@ -3,7 +3,9 @@ namespace Calculator
 {
 	public enum ACTION {
 		Add,
-		Mult
+		Mult,
+		Div,
+		Sub
 	}
 
 	/* The Receiver interface */

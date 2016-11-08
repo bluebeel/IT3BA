@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
       
 namespace Calculator
 {
@@ -10,10 +11,10 @@ namespace Calculator
 		The receiver is typically also the target object.
 		*/
 		ACTION currentAction;
-		string[] arguments;
-		double result;
+		List<double> arguments;
+		double result = double.NaN;
 
-		public Calculator(string[] args)
+		public Calculator(List<double> args)
 		{
 			arguments = args;
 		}
@@ -25,38 +26,22 @@ namespace Calculator
 
 		public double GetResult()
 		{
-
+			
 			if (currentAction == ACTION.Add)
 			{
-				if (arguments.Length == 1 || arguments.Length == 2)
-				{
-					Console.WriteLine("Please enter a minimun of 2 number");
-				}
-				else 
-				{
-					result = 0;
-					for (int i = 1; i < arguments.Length; i++) // Loop through array
-					{
-						result += Convert.ToDouble(arguments[i]);
-					}
-				}
-
+				result = arguments.Aggregate((a, b) => a + b);
 			}
 			else if (currentAction == ACTION.Mult)
 			{
-				if (arguments.Length == 1 || arguments.Length == 2)
-				{
-					Console.WriteLine("Please enter a minimun of 2 number");
-				}
-				else
-				{
-					result = 1;
-					for (int i = 1; i < arguments.Length; i++) // Loop through array
-					{
-						result *= Convert.ToDouble(arguments[i]);
-					}
-					return result;
-				}
+				result = arguments.Aggregate((a, b) => a * b);
+			}
+			else if (currentAction == ACTION.Div)
+			{
+				result = arguments.Aggregate((a, b) => a / b);
+			}
+			else if (currentAction == ACTION.Sub)
+			{
+				result = arguments.Aggregate((a, b) => a - b);
 			}
 			else
 			{
