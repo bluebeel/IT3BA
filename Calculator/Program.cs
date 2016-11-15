@@ -14,6 +14,7 @@ namespace Calculator
 			Command<double> divCmd;
 			Command<double> subCmd;
 			Command<double> multCmd;
+			//Command<double> evalCmd;
 			char[] delimiterChars = {' '};
 			List<double> arr = new List<double>();
 
@@ -35,6 +36,7 @@ namespace Calculator
 				addCmd = new AddCommand(calculator);
 				divCmd = new DivCommand(calculator);
 				subCmd = new SubCommand(calculator);
+				//evalCmd = new EvalCommand(calculator);
 				multCmd = new MultCommand(calculator);
 				if (arguments[0] == "Add")
 				{
@@ -56,6 +58,12 @@ namespace Calculator
 					command = subCmd;
 					Console.WriteLine(command.Execute());
 				}
+				/*
+				else if (arguments[0] == "Eval")
+				{
+					command = evalCmd;
+					Console.WriteLine(command.Execute());
+				} */
 				else if (arguments[0] == "Exit")
 				{
 					Environment.Exit(0);

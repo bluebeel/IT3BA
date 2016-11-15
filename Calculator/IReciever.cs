@@ -5,7 +5,8 @@ namespace Calculator
 		Add,
 		Mult,
 		Div,
-		Sub
+		Sub,
+		Eval
 	}
 
 	/* The Receiver interface */

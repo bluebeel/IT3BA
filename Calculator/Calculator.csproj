@@ -30,6 +30,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -42,6 +44,7 @@
     <Compile Include="Exceptions.cs" />
     <Compile Include="Commands\Substraction.cs" />
     <Compile Include="Commands\Division.cs" />
+    <Compile Include="Commands\Eval.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
