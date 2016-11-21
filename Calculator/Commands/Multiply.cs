@@ -1,18 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Calculator
 {
 	public class MultCommand : Command<double>
 	{
-		protected IReciever<double> reciever;
-		public MultCommand(IReciever<double> recv)
+		public MultCommand(List<double> args)
 		{
-			reciever = recv;
+			this.args = args;
 		}
 
 		public override double Execute()
 		{
-			reciever.SetAction(ACTION.Mult);
-			return reciever.GetResult();
+			return this.args.Aggregate((a, b) => a * b);
 		}
 	}
 }

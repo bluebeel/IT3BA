@@ -38,16 +38,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Commands\Add.cs" />
-    <Compile Include="IReciever.cs" />
     <Compile Include="Commands\Multiply.cs" />
-    <Compile Include="Calculator.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Commands\Substraction.cs" />
     <Compile Include="Commands\Division.cs" />
-    <Compile Include="Commands\Eval.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicCommand\BasicCommand.csproj">
+      <Project>{6B2A4983-919C-4E0A-B654-E3E9A3ECB854}</Project>
+      <Name>BasicCommand</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

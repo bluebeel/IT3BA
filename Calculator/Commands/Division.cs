@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Calculator
 {
 	public class DivCommand : Command<double>
@@ -11,16 +14,14 @@ namespace Calculator
 		 The Command's "execute" method then causes the pieces to come together.
 		 
 		 */
-		protected IReciever<double> reciever;
-		public DivCommand(IReciever<double> recv)
+		public DivCommand(List<double> args)
 		{
-			reciever = recv;
+			this.args = args;
 		}
 
 		public override double Execute()
 		{
-			reciever.SetAction(ACTION.Div);
-			return reciever.GetResult();
+			return this.args.Aggregate((a, b) => a - b);
 		}
 	}
 }
