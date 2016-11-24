@@ -51,6 +51,10 @@
       <Project>{6B2A4983-919C-4E0A-B654-E3E9A3ECB854}</Project>
       <Name>BasicCommand</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrigoCommand\TrigoCommand.csproj">
+      <Project>{1685BF27-12F7-40A1-9E52-1F9E902A92B4}</Project>
+      <Name>TrigoCommand</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

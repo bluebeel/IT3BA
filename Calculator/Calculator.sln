@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCommand", "..\BasicCommand\BasicCommand.csproj", "{6B2A4983-919C-4E0A-B654-E3E9A3ECB854}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrigoCommand", "..\TrigoCommand\TrigoCommand.csproj", "{1685BF27-12F7-40A1-9E52-1F9E902A92B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,5 +21,9 @@ Global
 		{6B2A4983-919C-4E0A-B654-E3E9A3ECB854}.Debug|x86.Build.0 = Debug|Any CPU
 		{6B2A4983-919C-4E0A-B654-E3E9A3ECB854}.Release|x86.ActiveCfg = Release|Any CPU
 		{6B2A4983-919C-4E0A-B654-E3E9A3ECB854}.Release|x86.Build.0 = Release|Any CPU
+		{1685BF27-12F7-40A1-9E52-1F9E902A92B4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1685BF27-12F7-40A1-9E52-1F9E902A92B4}.Debug|x86.Build.0 = Debug|Any CPU
+		{1685BF27-12F7-40A1-9E52-1F9E902A92B4}.Release|x86.ActiveCfg = Release|Any CPU
+		{1685BF27-12F7-40A1-9E52-1F9E902A92B4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
